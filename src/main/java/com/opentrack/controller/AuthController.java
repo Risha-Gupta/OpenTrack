@@ -55,6 +55,6 @@ public class AuthController {
 
     @Data static class LoginRequest {
         @NotBlank private String username;
-        @NotBlank private String password;
+        @NotBlank private String passwo
     }
 }
