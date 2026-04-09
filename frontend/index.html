@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenTrack — Open Source Contribution Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand"><span class="logo-icon">⟨/⟩</span><span class="logo-text">OpenTrack</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="login.html" id="auth-link">Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Track. Score. Celebrate.</h1>
+            <p>OpenTrack visualizes open source contributions across GitHub — commits, pull requests, issues, and code reviews — all in one place.</p>
+            <div class="hero-cta">
+                <a href="leaderboard.html" class="btn btn-primary">View Leaderboard</a>
+                <a href="register.html" class="btn btn-outline">Get Started</a>
+            </div>
+        </section>
+
+        <section class="stats-row" id="global-stats">
+            <div class="stat-card"><span class="stat-value" id="total-contributors">—</span><span class="stat-label">Contributors</span></div>
+            <div class="stat-card"><span class="stat-value" id="total-commits">—</span><span class="stat-label">Commits Tracked</span></div>
+            <div class="stat-card"><span class="stat-value" id="total-prs">—</span><span class="stat-label">Pull Requests</span></div>
+            <div class="stat-card"><span class="stat-value" id="total-orgs">—</span><span class="stat-label">Organizations</span></div>
+        </section>
+
+        <section class="top-contributors">
+            <h2>Top Contributors This Month</h2>
+            <div id="top-list" class="contributor-grid"></div>
+        </section>
+    </main>
+
+    <footer><p>OpenTrack — Built with ☕ and Spring Boot | <a href="https://github.com/opentrack">GitHub</a></p></footer>
+
+    <script src="js/api.js"></script>
+    <script>
+        async function loadHomePage() {
+            try {
+                const leaderboard = await api.getLeaderboard(0, 6);
+                const grid = document.getElementById('top-list');
+                leaderboard.content.forEach((c, i) => {
+                    grid.innerHTML += `
+                        <div class="contributor-card">
+                            <span class="rank">#${i + 1}</span>
+                            <img src="${c.avatarUrl || 'https://github.com/identicons/' + c.githubUsername + '.png'}" alt="${c.githubUsername}" class="avatar">
+                            <a href="profile.html?user=${c.githubUsername}" class="contributor-name">${c.githubUsername}</a>
+                            <span class="score">${c.totalScore} pts</span>
+                        </div>`;
+                });
+            } catch (e) { console.error('Failed to load home data', e); }
+        }
+        loadHomePage();
+    </script>
+</body>
+</html>
