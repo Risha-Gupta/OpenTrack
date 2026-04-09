@@ -1,0 +1,34 @@
+.profile-header { display: flex; align-items: center; gap: 1.5rem; background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; margin: 2rem 0; }
+.profile-avatar { width: 80px; height: 80px; border-radius: 50%; }
+.profile-info h1 { font-size: 1.5rem; font-weight: 700; }
+.profile-info p { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem; }
+.profile-score { margin-left: auto; text-align: center; }
+.score-value { font-size: 2.5rem; font-weight: 700; color: var(--accent); display: block; }
+.score-label { color: var(--text-muted); font-size: 0.8rem; }
+.profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
+.card h3 { font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.05em; }
+.stats-list { display: flex; flex-direction: column; gap: 0.8rem; }
+.stat-item { display: flex; justify-content: space-between; align-items: center;
+    padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+.stat-item:last-child { border-bottom: none; }
+.stat-name { color: var(--text-muted); font-size: 0.9rem; }
+.stat-val { font-weight: 600; color: var(--text); }
+.chart-card { display: flex; flex-direction: column; align-items: center; }
+.chart-card canvas { max-height: 260px; }
+.activity-item { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+.activity-item:last-child { border-bottom: none; }
+.event-badge { padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.COMMIT { background: #1f3a1f; color: var(--green); }
+.PULL_REQUEST_MERGED { background: #1a2f4a; color: var(--accent); }
+.PULL_REQUEST_OPENED { background: #1a2f4a; color: #79c0ff; }
+.ISSUE_OPENED { background: #3a2020; color: var(--red); }
+.CODE_REVIEW { background: #2d2a1f; color: var(--orange); }
+@media (max-width: 768px) {
+    .profile-grid { grid-template-columns: 1fr; }
+    .profile-header { flex-direction: column; text-align: center; }
+    .profile-score { margin: 0; }
+}

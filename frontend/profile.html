@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile — OpenTrack</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand"><span class="logo-icon">⟨/⟩</span><span class="logo-text">OpenTrack</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="profile.html" class="active">Profile</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="profile-header" id="profile-header">
+            <div class="profile-loading">Loading profile...</div>
+        </div>
+        <div class="profile-grid">
+            <div class="card stats-card">
+                <h3>Contribution Stats</h3>
+                <div class="stats-list" id="stats-list"></div>
+            </div>
+            <div class="card chart-card">
+                <h3>Activity Breakdown</h3>
+                <canvas id="activityChart" width="300" height="300"></canvas>
+            </div>
+        </div>
+        <div class="card recent-activity">
+            <h3>Recent Activity</h3>
+            <div id="activity-list"></div>
+        </div>
+    </main>
+    <script src="js/api.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>
