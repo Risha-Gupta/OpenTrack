@@ -1,0 +1,33 @@
+.page-header { margin: 2rem 0 1.5rem; }
+.page-header h1 { font-size: 1.8rem; font-weight: 700; }
+.subtitle { color: var(--text-muted); margin-top: 0.3rem; font-size: 0.9rem; }
+.filters { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+.filters select, .filters input {
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.9rem; }
+.filters input { flex: 1; }
+.filters input:focus, .filters select:focus { outline: none; border-color: var(--accent); }
+.podium { display: flex; justify-content: center; align-items: flex-end; gap: 1rem; margin: 2rem 0; }
+.podium-item { text-align: center; background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem 1rem; min-width: 120px; }
+.podium-item.first { border-color: gold; transform: scale(1.05); }
+.podium-item.second { border-color: silver; }
+.podium-item.third { border-color: #cd7f32; }
+.podium-rank { font-size: 1.5rem; }
+.podium-avatar { width: 50px; height: 50px; border-radius: 50%; margin: 0.5rem auto; display: block; }
+.podium-name { color: var(--accent); font-size: 0.85rem; font-weight: 600; display: block; }
+.podium-score { color: var(--green); font-size: 0.8rem; }
+.leaderboard-table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; }
+.leaderboard-table th { padding: 0.8rem 1rem; background: #1c2128; text-align: left;
+    font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.leaderboard-table td { padding: 0.8rem 1rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+.leaderboard-table tr:last-child td { border-bottom: none; }
+.leaderboard-table tr:hover td { background: #1c2128; }
+.rank-badge { font-weight: 700; color: var(--text-muted); }
+.rank-badge.top3 { color: gold; }
+.contributor-link { color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+.contributor-link img { width: 24px; height: 24px; border-radius: 50%; }
+.pagination { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; }
+.page-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    padding: 0.4rem 0.8rem; border-radius: var(--radius); cursor: pointer; font-size: 0.85rem; }
+.page-btn:hover, .page-btn.active { border-color: var(--accent); color: var(--accent); }
