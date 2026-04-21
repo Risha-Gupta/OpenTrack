@@ -1,0 +1,31 @@
+# Maven
+target/
+*.jar
+*.war
+*.class
+*.log
+
+# IDE
+.idea/
+*.iml
+.eclipse/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+*.env.local
+
+# Logs
+logs/
+*.log
+
+# Redis
+dump.rdb
+
+# Test artifacts
+test-results/
+coverage/
