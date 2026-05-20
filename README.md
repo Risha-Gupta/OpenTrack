@@ -1,0 +1,144 @@
+# OpenTrack
+
+OpenTrack is a web app that helps track open source work on GitHub. It collects activity like commits, pull requests, issues, and code reviews, then turns that activity into simple scores, reports, and leaderboards.[1]
+
+## What this project does
+
+This project is built to make open source contribution data easier to understand.[1] Instead of checking GitHub activity one page at a time, OpenTrack puts the important details in one place through a backend API, a small frontend, and a scoring system.[1]
+
+OpenTrack can:
+- Track contributor activity from GitHub
+- Save contributor data in a database
+- Score different kinds of contribution events
+- Show ranked leaderboards
+- Display contributor profiles and stats
+- Generate weekly and monthly reports
+- Support login with JWT-based authentication[1]
+
+## Tech stack
+
+The backend uses Java 17, Spring Boot 3, Spring Security, Spring Data JPA, MySQL, Redis, Flyway, and the GitHub REST API.[1] The frontend uses HTML, CSS, JavaScript, and Chart.js for simple charts and profile views.[1]
+
+| Part | Tools used |
+|------|------------|
+| Backend | Java 17, Spring Boot 3, Spring Security, Spring Data JPA |
+| Database | MySQL |
+| Cache | Redis |
+| Migrations | Flyway |
+| Frontend | HTML, CSS, JavaScript, Chart.js |
+| Auth | JWT |
+| Local setup | Docker, Docker Compose, Maven |
+
+## Project structure
+
+The project has a backend in `src/` and a frontend in `frontend/`.[1] It also includes Docker files, database migrations, tests, and common project files like `.gitignore`, `README`, and contribution guides.[1]
+
+```text
+opentrack/
+├── frontend/
+│   ├── css/
+│   ├── js/
+│   ├── index.html
+│   ├── leaderboard.html
+│   ├── profile.html
+│   ├── login.html
+│   └── register.html
+├── src/
+│   ├── main/java/com/opentrack/
+│   │   ├── config/
+│   │   ├── controller/
+│   │   ├── dto/
+│   │   ├── exception/
+│   │   ├── model/
+│   │   ├── repository/
+│   │   ├── scheduler/
+│   │   ├── service/
+│   │   └── util/
+│   └── resources/db/migration/
+├── Dockerfile
+├── docker-compose.yml
+├── pom.xml
+└── README.md
+```
+
+## Main features
+
+### 1. Contributor tracking
+OpenTrack stores contributors, organizations, and contribution events such as commits, pull requests, issues, reviews, forks, and releases.[1] This makes it easier to measure how active a contributor has been over time.[1]
+
+### 2. Scoring system
+The app gives points for different kinds of work so contributors can be ranked in a leaderboard.[1] For example, commits, pull requests, reviews, and releases all have different score values in the backend scoring service.[1]
+
+### 3. Reports
+The project includes report endpoints for weekly and monthly summaries.[1] These reports can show contributor scores and event counts during a selected time range.[1]
+
+### 4. Authentication
+Users can register, log in, and link their GitHub account.[1] The backend uses Spring Security and JWT tokens to protect private endpoints.[1]
+
+### 5. Frontend pages
+The frontend includes a home page, leaderboard page, profile page, login page, and register page.[1] It also includes JavaScript files for API calls, charts, authentication, and leaderboard rendering.[1]
+
+## API overview
+
+The backend includes endpoints for authentication, users, contributors, sync actions, and reports.[1] These endpoints are designed so the frontend can show profiles, leaderboards, and reports without too much extra logic.[1]
+
+| Method | Endpoint | Purpose |
+|--------|----------|---------|
+| POST | `/auth/register` | Create a new account |
+| POST | `/auth/login` | Log in and get a JWT token |
+| GET | `/users/me` | Get current user details |
+| PUT | `/users/me/github` | Link a GitHub username |
+| GET | `/contributors` | Get the leaderboard |
+| GET | `/contributors/{username}` | Get contributor details |
+| GET | `/contributors/{username}/stats` | Get contributor stats |
+| POST | `/sync/contributor/{username}` | Run a manual sync |
+| GET | `/reports/monthly` | Get a monthly report |
+| GET | `/reports/weekly/{username}` | Get a weekly report |
+
+## How to run it locally
+
+This project is set up for local development with Docker, MySQL, Redis, and Maven.[1] A simple local setup can look like this:[1]
+
+1. Copy `.env.example` to `.env`.
+2. Add your database password, GitHub token, and JWT secret.
+3. Start MySQL and Redis with Docker Compose.
+4. Run the Spring Boot app.
+5. Open the frontend files in a browser.[1]
+
+```bash
+cp .env.example .env
+docker-compose up mysql redis -d
+./mvnw spring-boot:run
+```
+
+Backend base path:
+
+```text
+http://localhost:8080/api/v1
+```
+
+Swagger docs path:
+
+```text
+http://localhost:8080/api/v1/swagger-ui/index.html
+```
+
+## Database and caching
+
+The database schema is managed with Flyway migration files named `V1__init_schema.sql`, `V2__add_indexes.sql`, and `V3__seed_data.sql`.[1] Redis is used for caching things like GitHub event data and leaderboard results so the app can respond faster and avoid extra API calls.[1]
+
+## Testing
+
+The project includes tests for services and controllers such as scoring, GitHub integration, authentication, contributor endpoints, and leaderboard logic.[1] These tests help check that the main features work as expected.[1]
+
+## Why this project is useful
+
+OpenTrack is useful for student clubs, open source communities, hackathon teams, and organizations that want a simple way to track contribution activity.[1] It can also be used as a learning project for students who want practice with Spring Boot, REST APIs, authentication, caching, database design, and frontend integration.[1]
+
+## Notes
+
+This project is meant for local development and code sharing. It should not be deployed unless secrets, security settings, production database setup, and GitHub API limits are handled properly.
+
+## License
+
+MIT
